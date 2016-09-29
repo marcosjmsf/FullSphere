@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+             http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+                          http://www.springframework.org/schema/context 
+                          http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	
+<!-- Inicio Consumers -->
+
+	<bean id="consumerUsuarioFisico" class="Consumer.ConsumerUsuarioFisico">
+		<property name="usuarioFisicoControl" ref="usuarioFisicoControl" />
+	</bean>
+	
+	<bean id="consumerUsuarioJuridico" class="Consumer.ConsumerUsuarioJuridico">
+		<property name="usuarioJuridicoControl" ref="usuarioJuridicoControl" />
+	</bean>
+	
+	<bean id="consumerEndereco" class="Consumer.ConsumerEndereco">
+		<property name="enderecoControl" ref="enderecoControl" />
+	</bean>
+	
+	<bean id="consumerArtista" class="Consumer.ConsumerArtista">
+		<property name="artistaControl" ref="artistaControl" />
+	</bean>
+	
+	<bean id="consumerAlbum" class="Consumer.ConsumerAlbum">
+		<property name="albumControl" ref="albumControl" />
+	</bean>
+	
+	<bean id="consumerEdicaoAlbum" class="Consumer.ConsumerEdicaoAlbum">
+		<property name="edicaoAlbumControl" ref="edicaoAlbumControl" />
+	</bean>
+
+	<bean id="consumerUtil" class="Consumer.ConsumerUtil">
+		<property name="utilControl" ref="utilControl" />
+	</bean>
+	
+	<bean id="consumerUsuario" class="Consumer.ConsumerUsuario">
+		<property name="usuarioControl" ref="usuarioControl" />
+	</bean>
+
+	<bean id="consumerItemColecao" class="Consumer.ConsumerItemColecao">
+		<property name="itemColecaoControl" ref="itemColecaoControl" />
+	</bean>
+	
+	<bean id="consumerComentario" class="Consumer.ConsumerComentario">
+		<property name="comentarioControl" ref="comentarioControl" />
+	</bean>
+	
+	<bean id="consumerAmizade" class="Consumer.ConsumerAmizade">
+		<property name="amizadeControl" ref="amizadeControl" />
+	</bean>
+	
+	<bean id="consumerMensagem" class="Consumer.ConsumerMensagem">
+		<property name="mensagemControl" ref="mensagemControl" />
+	</bean>
+
+<!-- Fim Consumers -->
+
+<!-- Inicio Control -->
+
+	<bean id="usuarioFisicoControl" class="Control.UsuarioFisicoControl">
+		<property name="usuarioFisicoModel" ref="usuarioFisicoModel" />
+	</bean>
+	
+	
+	<bean id="usuarioJuridicoControl" class="Control.UsuarioJuridicoControl">
+		<property name="usuarioJuridicoModel" ref="usuarioJuridicoModel" />
+	</bean>
+	
+	<bean id="enderecoControl" class="Control.EnderecoControl">
+		<property name="enderecoModel" ref="enderecoModel" />
+	</bean>
+	
+	<bean id="artistaControl" class="Control.ArtistaControl">
+		<property name="artistaModel" ref="artistaModel" />
+	</bean>
+	
+	<bean id="albumControl" class="Control.AlbumControl">
+		<property name="albumModel" ref="albumModel" />
+	</bean>
+	
+	<bean id="edicaoAlbumControl" class="Control.EdicaoAlbumControl">
+		<property name="edicaoAlbumModel" ref="edicaoAlbumModel" />
+	</bean>
+	
+	<bean id="utilControl" class="Control.UtilControl">
+		<property name="utilModel" ref="utilModel" />
+	</bean>
+	
+	<bean id="usuarioControl" class="Control.UsuarioControl">
+		<property name="usuarioModel" ref="usuarioModel" />
+	</bean>
+	
+	<bean id="itemColecaoControl" class="Control.ItemColecaoControl">
+		<property name="itemColecaoModel" ref="itemColecaoModel" />
+	</bean>
+	
+	<bean id="comentarioControl" class="Control.ComentarioControl">
+		<property name="comentarioModel" ref="comentarioModel" />
+	</bean>
+	
+	<bean id="amizadeControl" class="Control.AmizadeControl">
+		<property name="amizadeModel" ref="amizadeModel" />
+	</bean>
+	
+	<bean id="mensagemControl" class="Control.MensagemControl">
+		<property name="mensagemModel" ref="mensagemModel" />
+	</bean>
+	
+<!-- Fim Control -->
+
+<!-- Inicio Model -->
+
+	<bean id="usuarioFisicoModel" class="Model.UsuarioFisicoModel">
+		<property name="usuarioFisicoDao" ref="usuarioFisicoDao" />
+	</bean>
+
+	<bean id="usuarioJuridicoModel" class="Model.UsuarioJuridicoModel">
+		<property name="usuarioJuridicoDao" ref="usuarioJuridicoDao" />
+	</bean>
+	
+	<bean id="enderecoModel" class="Model.EnderecoModel">
+		<property name="enderecoDao" ref="enderecoDao" />
+	</bean>
+	
+	<bean id="artistaModel" class="Model.ArtistaModel">
+		<property name="artistaDao" ref="artistaDao" />
+		<property name="diretorio" value="${local.diretorio.artista}" />
+		<property name="ftp" ref="ftpArtista" />
+	</bean>
+	
+	<bean id="albumModel" class="Model.AlbumModel">
+		<property name="albumDao" ref="albumDao" />
+		<property name="diretorio" value="${local.diretorio.album}" />
+		<property name="ftp" ref="ftpAlbum" />
+	</bean>
+	
+	<bean id="edicaoAlbumModel" class="Model.EdicaoAlbumModel">
+		<property name="edicaoAlbumDao" ref="edicaoAlbumDao" />
+		<property name="diretorio" value="${local.diretorio.edicao.album}" />
+		<property name="ftp" ref="ftpEdicaoAlbum" />
+	</bean>
+	
+	
+	<bean id="utilModel" class="Model.UtilModel">
+		<property name="utilDao" ref="utilDao" />
+	</bean>
+	
+	<bean id="usuarioModel" class="Model.UsuarioModel">
+		<property name="usuarioDao" ref="usuarioDao" />
+		<property name="diretorio" value="${local.diretorio.usuario}" />
+		<property name="ftp" ref="ftpUsuario" />
+	</bean>
+
+	<bean id="itemColecaoModel" class="Model.ItemColecaoModel">
+		<property name="itemColecaoDao" ref="itemColecaoDao" />
+	</bean>
+	
+	<bean id="comentarioModel" class="Model.ComentarioModel">
+		<property name="comentarioDao" ref="comentarioDao" />
+	</bean>
+	
+	<bean id="amizadeModel" class="Model.AmizadeModel">
+		<property name="amizadeDao" ref="amizadeDao" />
+	</bean>
+	
+	<bean id="mensagemModel" class="Model.MensagemModel">
+		<property name="mensagemDao" ref="mensagemDao" />
+	</bean>
+
+<!-- Fim Model -->
+
+
+<!-- Inicio DAO -->
+
+	<bean id="usuarioFisicoDao" class="DAO.UsuarioFisicoDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroUsuarioPessoaFisica" ref="procedureCadastroUsuarioPessoaFisica" />
+		<property name="procedureUpdateUsuarioPessoaFisica" ref="procedureUpdateUsuarioPessoaFisica" />
+		<property name="procedureConfiguracaoPaginaUsuario" ref="procedureConfiguracaoPaginaUsuario" />
+	</bean>
+
+	<bean id="usuarioJuridicoDao" class="DAO.UsuarioJuridicoDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroUsuarioPessoaJuridica" ref="procedureCadastroUsuarioPessoaJuridica" />
+	</bean>
+	
+	<bean id="enderecoDao" class="DAO.EnderecoDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroLogradouro" ref="procedureCadastroLogradouro" />
+	</bean>
+	
+	<bean id="artistaDao" class="DAO.ArtistaDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroArtista" ref="procedureCadastroArtista" />
+		<property name="procedureCadastroEstiloMusical" ref="procedureCadastroEstiloMusical" />
+	</bean>
+	
+	<bean id="albumDao" class="DAO.AlbumDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroEstiloMusicalAlbum" ref="procedureCadastroEstiloMusicalAlbum" />
+		<property name="procedureCadastroAlbum" ref="procedureCadastroAlbum" />
+	</bean>
+	
+	<bean id="edicaoAlbumDao" class="DAO.EdicaoAlbumDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroEdicaoAlbum" ref="procedureCadastroEdicaoAlbum" />
+	</bean>
+	<bean id="utilDao" class="DAO.UtilDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroGravadora" ref="procedureCadastroGravadora" />
+	</bean>
+	
+	<bean id="usuarioDao" class="DAO.UsuarioDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureLogin" ref="procedureLogin" />
+		<property name="procedureTrocaSenha" ref="procedureTrocaSenha" />
+		<property name="procedureUpdateEmailUsuario" ref="procedureUpdateEmailUsuario" />
+	</bean>
+		
+	<bean id="itemColecaoDao" class="DAO.ItemColecaoDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroItemColecao" ref="procedureCadastroItemColecao" />
+	</bean>
+	
+	<bean id="comentarioDao" class="DAO.ComentarioDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroComentarioArtista" ref="procedureCadastroComentarioArtista" />
+		<property name="procedureCadastroComentarioAlbum" ref="procedureCadastroComentarioAlbum" />
+	</bean>
+
+	<bean id="amizadeDao" class="DAO.AmizadeDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+		<property name="procedureCadastroAmizade" ref="procedureCadastroAmizade" />
+		<property name="procedureUpdateEstadoAmizade" ref="procedureUpdateEstadoAmizade" />
+		<property name="procedureDeleteAmizade" ref="procedureDeleteAmizade" />
+		<property name="procedureBloqueioAmizade" ref="procedureBloqueioAmizade" />
+	</bean>
+	
+	<bean id="mensagemDao" class="DAO.MensagemDao">
+		<property name="jdbcTemplate" ref="jdbcTemplate" />
+	</bean>
+
+<!-- Fim DAO -->
+
+<!-- Inicio Procedure -->
+
+
+	<bean id="procedureCadastroUsuarioPessoaFisica" class="Procedure.ProcedureCadastroUsuarioPessoaFisica">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	
+	<bean id="procedureCadastroUsuarioPessoaJuridica" class="Procedure.ProcedureCadastroUsuarioPessoaJuridica">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroLogradouro" class="Procedure.ProcedureCadastroLogradouro">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroArtista" class="Procedure.ProcedureCadastroArtista">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroEstiloMusical" class="Procedure.ProcedureCadastroEstiloMusical">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroEstiloMusicalAlbum" class="Procedure.ProcedureCadastroEstiloMusicalAlbum">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroAlbum" class="Procedure.ProcedureCadastroAlbum">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroEdicaoAlbum" class="Procedure.ProcedureCadastroEdicaoAlbum">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureLogin" class="Procedure.ProcedureLogin">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroGravadora" class="Procedure.ProcedureCadastroGravadora">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroItemColecao" class="Procedure.ProcedureCadastroItemColecao">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+
+	<bean id="procedureUpdateUsuarioPessoaFisica" class="Procedure.ProcedureUpdateUsuarioPessoaFisica">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+
+	<bean id="procedureTrocaSenha" class="Procedure.ProcedureTrocaSenha">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroAmizade" class="Procedure.ProcedureCadastroAmizade">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureUpdateEstadoAmizade" class="Procedure.ProcedureUpdateEstadoAmizade">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureConfiguracaoPaginaUsuario" class="Procedure.ProcedureConfiguracaoPaginaUsuario">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureUpdateEmailUsuario" class="Procedure.ProcedureUpdateEmailUsuario">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureDeleteAmizade" class="Procedure.ProcedureDeleteAmizade">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureBloqueioAmizade" class="Procedure.ProcedureBloqueioAmizade">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+
+	<bean id="procedureCadastroComentarioArtista" class="Procedure.ProcedureCadastroComentarioArtista">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+	
+	<bean id="procedureCadastroComentarioAlbum" class="Procedure.ProcedureCadastroComentarioAlbum">
+		  <constructor-arg ref="dataSource" />
+	</bean>
+
+<!-- Fim Procedure -->
+
+
+<!-- Inicio Config -->
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>WEB-INF/app.properties</value>
+		</property>
+	</bean>
+   
+   <bean class="org.springframework.jdbc.datasource.DriverManagerDataSource" id="dataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/disksphere"/>
+		<property name="username" value="root"/>
+		<property name="password" value="141719"/>
+	</bean>
+
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	<bean class="Bean.Ftp" id="ftpUsuario">
+		<property name="host" value="${ftp.host}"/>
+		<property name="porta" value="${ftp.port}"/>
+		<property name="senha" value="${ftp.password}"/>
+		<property name="usuario" value="${ftp.user}"/>
+		<property name="diretorio" value="${ftp.diretorio.usuario}"/>
+	</bean>
+
+	<bean class="Bean.Ftp" id="ftpArtista">
+		<property name="host" value="${ftp.host}"/>
+		<property name="porta" value="${ftp.port}"/>
+		<property name="senha" value="${ftp.password}"/>
+		<property name="usuario" value="${ftp.user}"/>
+		<property name="diretorio" value="${ftp.diretorio.artista}"/>
+	</bean>
+	
+	<bean class="Bean.Ftp" id="ftpAlbum">
+		<property name="host" value="${ftp.host}"/>
+		<property name="porta" value="${ftp.port}"/>
+		<property name="senha" value="${ftp.password}"/>
+		<property name="usuario" value="${ftp.user}"/>
+		<property name="diretorio" value="${ftp.diretorio.album}"/>
+	</bean>
+	
+	<bean class="Bean.Ftp" id="ftpEdicaoAlbum">
+		<property name="host" value="${ftp.host}"/>
+		<property name="porta" value="${ftp.port}"/>
+		<property name="senha" value="${ftp.password}"/>
+		<property name="usuario" value="${ftp.user}"/>
+		<property name="diretorio" value="${ftp.diretorio.edicao.album}"/>
+	</bean>
+
+<!-- Fim Config -->
+
+
+
+</beans>	
